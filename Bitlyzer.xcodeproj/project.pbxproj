@@ -1,0 +1,285 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D37AF5FF14F5898200296890 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AF5FE14F5898200296890 /* UIKit.framework */; };
+		D37AF60114F5898200296890 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AF60014F5898200296890 /* Foundation.framework */; };
+		D37AF60314F5898200296890 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AF60214F5898200296890 /* CoreGraphics.framework */; };
+		D37AF63014F58BAE00296890 /* Bitlyzer-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D37AF62D14F58BAE00296890 /* Bitlyzer-Info.plist */; };
+		D37AF63114F58BAE00296890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D37AF62E14F58BAE00296890 /* main.m */; };
+		D37AF63514F58BCB00296890 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D37AF63314F58BCB00296890 /* InfoPlist.strings */; };
+		D37AF64B14F58BFC00296890 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D37AF64414F58BFC00296890 /* AppDelegate.m */; };
+		D37AF64D14F58BFC00296890 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37AF64614F58BFC00296890 /* ViewController.m */; };
+		D37AF64E14F58BFC00296890 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D37AF64714F58BFC00296890 /* ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D37AF5FA14F5898200296890 /* Bitlyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitlyzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D37AF5FE14F5898200296890 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D37AF60014F5898200296890 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D37AF60214F5898200296890 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D37AF62D14F58BAE00296890 /* Bitlyzer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Bitlyzer-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D37AF62E14F58BAE00296890 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
+		D37AF62F14F58BAE00296890 /* Bitlyzer-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bitlyzer-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		D37AF63414F58BCB00296890 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		D37AF64414F58BFC00296890 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Src/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		D37AF64614F58BFC00296890 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = Src/ViewController.m; sourceTree = SOURCE_ROOT; };
+		D37AF64714F58BFC00296890 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewController.xib; path = Src/ViewController.xib; sourceTree = SOURCE_ROOT; };
+		D37AF64814F58BFC00296890 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Src/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		D37AF64A14F58BFC00296890 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Src/ViewController.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D37AF5F714F5898200296890 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D37AF5FF14F5898200296890 /* UIKit.framework in Frameworks */,
+				D37AF60114F5898200296890 /* Foundation.framework in Frameworks */,
+				D37AF60314F5898200296890 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D37AF5EF14F5898200296890 = {
+			isa = PBXGroup;
+			children = (
+				D37AF60414F5898200296890 /* Bitlyzer */,
+				D37AF5FD14F5898200296890 /* Frameworks */,
+				D37AF5FB14F5898200296890 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D37AF5FB14F5898200296890 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D37AF5FA14F5898200296890 /* Bitlyzer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D37AF5FD14F5898200296890 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D37AF5FE14F5898200296890 /* UIKit.framework */,
+				D37AF60014F5898200296890 /* Foundation.framework */,
+				D37AF60214F5898200296890 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D37AF60414F5898200296890 /* Bitlyzer */ = {
+			isa = PBXGroup;
+			children = (
+				D37AF64814F58BFC00296890 /* AppDelegate.h */,
+				D37AF64414F58BFC00296890 /* AppDelegate.m */,
+				D37AF64A14F58BFC00296890 /* ViewController.h */,
+				D37AF64614F58BFC00296890 /* ViewController.m */,
+				D37AF64714F58BFC00296890 /* ViewController.xib */,
+				D37AF60514F5898200296890 /* Supporting Files */,
+			);
+			path = Bitlyzer;
+			sourceTree = "<group>";
+		};
+		D37AF60514F5898200296890 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D37AF63214F58BCB00296890 /* en.lproj */,
+				D37AF62D14F58BAE00296890 /* Bitlyzer-Info.plist */,
+				D37AF62E14F58BAE00296890 /* main.m */,
+				D37AF62F14F58BAE00296890 /* Bitlyzer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D37AF63214F58BCB00296890 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				D37AF63314F58BCB00296890 /* InfoPlist.strings */,
+			);
+			path = en.lproj;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D37AF5F914F5898200296890 /* Bitlyzer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D37AF61814F5898300296890 /* Build configuration list for PBXNativeTarget "Bitlyzer" */;
+			buildPhases = (
+				D37AF5F614F5898200296890 /* Sources */,
+				D37AF5F714F5898200296890 /* Frameworks */,
+				D37AF5F814F5898200296890 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Bitlyzer;
+			productName = Bitlyzer;
+			productReference = D37AF5FA14F5898200296890 /* Bitlyzer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D37AF5F114F5898200296890 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "H-umus";
+			};
+			buildConfigurationList = D37AF5F414F5898200296890 /* Build configuration list for PBXProject "Bitlyzer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D37AF5EF14F5898200296890;
+			productRefGroup = D37AF5FB14F5898200296890 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D37AF5F914F5898200296890 /* Bitlyzer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D37AF5F814F5898200296890 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D37AF63014F58BAE00296890 /* Bitlyzer-Info.plist in Resources */,
+				D37AF63514F58BCB00296890 /* InfoPlist.strings in Resources */,
+				D37AF64E14F58BFC00296890 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D37AF5F614F5898200296890 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D37AF63114F58BAE00296890 /* main.m in Sources */,
+				D37AF64B14F58BFC00296890 /* AppDelegate.m in Sources */,
+				D37AF64D14F58BFC00296890 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D37AF63314F58BCB00296890 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D37AF63414F58BCB00296890 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D37AF61614F5898300296890 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D37AF61714F5898300296890 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D37AF61914F5898300296890 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Bitlyzer-Prefix.pch";
+				INFOPLIST_FILE = "Bitlyzer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D37AF61A14F5898300296890 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Bitlyzer-Prefix.pch";
+				INFOPLIST_FILE = "Bitlyzer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D37AF5F414F5898200296890 /* Build configuration list for PBXProject "Bitlyzer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D37AF61614F5898300296890 /* Debug */,
+				D37AF61714F5898300296890 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D37AF61814F5898300296890 /* Build configuration list for PBXNativeTarget "Bitlyzer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D37AF61914F5898300296890 /* Debug */,
+				D37AF61A14F5898300296890 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D37AF5F114F5898200296890 /* Project object */;
+}
