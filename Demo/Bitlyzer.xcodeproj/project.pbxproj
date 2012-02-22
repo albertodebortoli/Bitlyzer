@@ -7,30 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D3178D0814F594A400AA9C47 /* Bitlyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3178CFE14F594A400AA9C47 /* Bitlyzer.m */; };
-		D3178D0914F594A400AA9C47 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3178D0114F594A400AA9C47 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = ""; }; };
-		D3178D0A14F594A400AA9C47 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3178D0314F594A400AA9C47 /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = ""; }; };
-		D3178D0B14F594A400AA9C47 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3178D0614F594A400AA9C47 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = ""; }; };
+		D320256114F5A34700E7753C /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D320255914F5A34700E7753C /* AFHTTPRequestOperation.m */; };
+		D320256214F5A34700E7753C /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D320255B14F5A34700E7753C /* AFJSONRequestOperation.m */; };
+		D320256314F5A34700E7753C /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D320255E14F5A34700E7753C /* AFURLConnectionOperation.m */; };
+		D320256414F5A34700E7753C /* Bitlyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = D320256014F5A34700E7753C /* Bitlyzer.m */; };
 		D37AF5FF14F5898200296890 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AF5FE14F5898200296890 /* UIKit.framework */; };
 		D37AF60114F5898200296890 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AF60014F5898200296890 /* Foundation.framework */; };
 		D37AF60314F5898200296890 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AF60214F5898200296890 /* CoreGraphics.framework */; };
 		D37AF63114F58BAE00296890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D37AF62E14F58BAE00296890 /* main.m */; };
-		D37AF64B14F58BFC00296890 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D37AF64414F58BFC00296890 /* AppDelegate.m */; settings = {COMPILER_FLAGS = ""; }; };
-		D37AF64D14F58BFC00296890 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37AF64614F58BFC00296890 /* ViewController.m */; settings = {COMPILER_FLAGS = ""; }; };
-		D37AF64E14F58BFC00296890 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D37AF64714F58BFC00296890 /* ViewController.xib */; };
 		D37AF67E14F58F0500296890 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D37AF67C14F58F0500296890 /* InfoPlist.strings */; };
+		D3AF428714F5A2F500523C73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AF428214F5A2F500523C73 /* AppDelegate.m */; };
+		D3AF428814F5A2F500523C73 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AF428314F5A2F500523C73 /* ViewController.m */; };
+		D3AF428914F5A2F500523C73 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3AF428414F5A2F500523C73 /* ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D3178CFE14F594A400AA9C47 /* Bitlyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bitlyzer.m; path = Src/Bitlyzer/Bitlyzer.m; sourceTree = SOURCE_ROOT; };
-		D3178D0014F594A400AA9C47 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
-		D3178D0114F594A400AA9C47 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
-		D3178D0214F594A400AA9C47 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
-		D3178D0314F594A400AA9C47 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
-		D3178D0414F594A400AA9C47 /* AFJSONUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONUtilities.h; sourceTree = "<group>"; };
-		D3178D0514F594A400AA9C47 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
-		D3178D0614F594A400AA9C47 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
-		D3178D0714F594A400AA9C47 /* Bitlyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bitlyzer.h; path = Src/Bitlyzer/Bitlyzer.h; sourceTree = SOURCE_ROOT; };
+		D320255814F5A34700E7753C /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = ../Src/AFNetworking/AFHTTPRequestOperation.h; sourceTree = SOURCE_ROOT; };
+		D320255914F5A34700E7753C /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = ../Src/AFNetworking/AFHTTPRequestOperation.m; sourceTree = SOURCE_ROOT; };
+		D320255A14F5A34700E7753C /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFJSONRequestOperation.h; path = ../Src/AFNetworking/AFJSONRequestOperation.h; sourceTree = SOURCE_ROOT; };
+		D320255B14F5A34700E7753C /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFJSONRequestOperation.m; path = ../Src/AFNetworking/AFJSONRequestOperation.m; sourceTree = SOURCE_ROOT; };
+		D320255C14F5A34700E7753C /* AFJSONUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFJSONUtilities.h; path = ../Src/AFNetworking/AFJSONUtilities.h; sourceTree = SOURCE_ROOT; };
+		D320255D14F5A34700E7753C /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = ../Src/AFNetworking/AFURLConnectionOperation.h; sourceTree = SOURCE_ROOT; };
+		D320255E14F5A34700E7753C /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = ../Src/AFNetworking/AFURLConnectionOperation.m; sourceTree = SOURCE_ROOT; };
+		D320255F14F5A34700E7753C /* Bitlyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; name = Bitlyzer.h; path = ../Src/Bitlyzer.h; sourceTree = SOURCE_ROOT; };
+		D320256014F5A34700E7753C /* Bitlyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bitlyzer.m; path = ../Src/Bitlyzer.m; sourceTree = SOURCE_ROOT; };
 		D37AF5FA14F5898200296890 /* Bitlyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitlyzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37AF5FE14F5898200296890 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D37AF60014F5898200296890 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -38,12 +38,12 @@
 		D37AF62D14F58BAE00296890 /* Bitlyzer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Bitlyzer-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D37AF62E14F58BAE00296890 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		D37AF62F14F58BAE00296890 /* Bitlyzer-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bitlyzer-Prefix.pch"; sourceTree = SOURCE_ROOT; };
-		D37AF64414F58BFC00296890 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Src/AppDelegate.m; sourceTree = SOURCE_ROOT; };
-		D37AF64614F58BFC00296890 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = Src/ViewController.m; sourceTree = SOURCE_ROOT; };
-		D37AF64714F58BFC00296890 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewController.xib; path = Src/ViewController.xib; sourceTree = SOURCE_ROOT; };
-		D37AF64814F58BFC00296890 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Src/AppDelegate.h; sourceTree = SOURCE_ROOT; };
-		D37AF64A14F58BFC00296890 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Src/ViewController.h; sourceTree = SOURCE_ROOT; };
 		D37AF67D14F58F0500296890 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		D3AF428214F5A2F500523C73 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		D3AF428314F5A2F500523C73 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = SOURCE_ROOT; };
+		D3AF428414F5A2F500523C73 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = SOURCE_ROOT; };
+		D3AF428514F5A2F500523C73 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		D3AF428614F5A2F500523C73 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,25 +60,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D3178CFF14F594A400AA9C47 /* AFNetworking */ = {
+		D320255614F5A34700E7753C /* Src */ = {
 			isa = PBXGroup;
 			children = (
-				D3178D0014F594A400AA9C47 /* AFHTTPRequestOperation.h */,
-				D3178D0114F594A400AA9C47 /* AFHTTPRequestOperation.m */,
-				D3178D0214F594A400AA9C47 /* AFJSONRequestOperation.h */,
-				D3178D0314F594A400AA9C47 /* AFJSONRequestOperation.m */,
-				D3178D0414F594A400AA9C47 /* AFJSONUtilities.h */,
-				D3178D0514F594A400AA9C47 /* AFURLConnectionOperation.h */,
-				D3178D0614F594A400AA9C47 /* AFURLConnectionOperation.m */,
+				D320255714F5A34700E7753C /* AFNetworking */,
+				D320255F14F5A34700E7753C /* Bitlyzer.h */,
+				D320256014F5A34700E7753C /* Bitlyzer.m */,
 			);
-			name = AFNetworking;
-			path = Src/Bitlyzer/AFNetworking;
-			sourceTree = SOURCE_ROOT;
+			name = Src;
+			path = ../../Src;
+			sourceTree = "<group>";
+		};
+		D320255714F5A34700E7753C /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				D320255814F5A34700E7753C /* AFHTTPRequestOperation.h */,
+				D320255914F5A34700E7753C /* AFHTTPRequestOperation.m */,
+				D320255A14F5A34700E7753C /* AFJSONRequestOperation.h */,
+				D320255B14F5A34700E7753C /* AFJSONRequestOperation.m */,
+				D320255C14F5A34700E7753C /* AFJSONUtilities.h */,
+				D320255D14F5A34700E7753C /* AFURLConnectionOperation.h */,
+				D320255E14F5A34700E7753C /* AFURLConnectionOperation.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
 		};
 		D37AF5EF14F5898200296890 = {
 			isa = PBXGroup;
 			children = (
-				D37AF60414F5898200296890 /* Src */,
+				D37AF60414F5898200296890 /* Bitlyzer */,
 				D37AF5FD14F5898200296890 /* Frameworks */,
 				D37AF5FB14F5898200296890 /* Products */,
 			);
@@ -102,18 +112,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D37AF60414F5898200296890 /* Src */ = {
+		D37AF60414F5898200296890 /* Bitlyzer */ = {
 			isa = PBXGroup;
 			children = (
-				D37AF68914F593DF00296890 /* Bitlyzer */,
-				D37AF64814F58BFC00296890 /* AppDelegate.h */,
-				D37AF64414F58BFC00296890 /* AppDelegate.m */,
-				D37AF64A14F58BFC00296890 /* ViewController.h */,
-				D37AF64614F58BFC00296890 /* ViewController.m */,
-				D37AF64714F58BFC00296890 /* ViewController.xib */,
+				D320255614F5A34700E7753C /* Src */,
+				D3AF428514F5A2F500523C73 /* AppDelegate.h */,
+				D3AF428214F5A2F500523C73 /* AppDelegate.m */,
+				D3AF428614F5A2F500523C73 /* ViewController.h */,
+				D3AF428314F5A2F500523C73 /* ViewController.m */,
+				D3AF428414F5A2F500523C73 /* ViewController.xib */,
 				D37AF60514F5898200296890 /* Supporting Files */,
 			);
-			name = Src;
 			path = Bitlyzer;
 			sourceTree = "<group>";
 		};
@@ -135,16 +144,6 @@
 			);
 			path = en.lproj;
 			sourceTree = SOURCE_ROOT;
-		};
-		D37AF68914F593DF00296890 /* Bitlyzer */ = {
-			isa = PBXGroup;
-			children = (
-				D3178CFF14F594A400AA9C47 /* AFNetworking */,
-				D3178D0714F594A400AA9C47 /* Bitlyzer.h */,
-				D3178CFE14F594A400AA9C47 /* Bitlyzer.m */,
-			);
-			name = Bitlyzer;
-			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -197,8 +196,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D37AF64E14F58BFC00296890 /* ViewController.xib in Resources */,
 				D37AF67E14F58F0500296890 /* InfoPlist.strings in Resources */,
+				D3AF428914F5A2F500523C73 /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,12 +209,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D37AF63114F58BAE00296890 /* main.m in Sources */,
-				D37AF64B14F58BFC00296890 /* AppDelegate.m in Sources */,
-				D37AF64D14F58BFC00296890 /* ViewController.m in Sources */,
-				D3178D0814F594A400AA9C47 /* Bitlyzer.m in Sources */,
-				D3178D0914F594A400AA9C47 /* AFHTTPRequestOperation.m in Sources */,
-				D3178D0A14F594A400AA9C47 /* AFJSONRequestOperation.m in Sources */,
-				D3178D0B14F594A400AA9C47 /* AFURLConnectionOperation.m in Sources */,
+				D3AF428714F5A2F500523C73 /* AppDelegate.m in Sources */,
+				D3AF428814F5A2F500523C73 /* ViewController.m in Sources */,
+				D320256114F5A34700E7753C /* AFHTTPRequestOperation.m in Sources */,
+				D320256214F5A34700E7753C /* AFJSONRequestOperation.m in Sources */,
+				D320256314F5A34700E7753C /* AFURLConnectionOperation.m in Sources */,
+				D320256414F5A34700E7753C /* Bitlyzer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +283,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bitlyzer-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Bitlyzer-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -296,6 +296,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bitlyzer-Prefix.pch";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Bitlyzer-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
