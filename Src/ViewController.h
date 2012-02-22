@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Bitlyzer.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <BitlyzerDelegate> {
+    
+    IBOutlet UILabel *shortenURLLabel;
+    IBOutlet UITextField *textField;
+}
+
+- (IBAction)shortUrlAction:(id)sender;
 
 @end
