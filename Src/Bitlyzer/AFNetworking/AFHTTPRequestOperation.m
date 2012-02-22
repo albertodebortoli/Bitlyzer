@@ -23,7 +23,7 @@
 #import "AFHTTPRequestOperation.h"
 
 @interface AFHTTPRequestOperation ()
-@property (readwrite, nonatomic, retain) NSError *HTTPError;
+@property (readwrite, nonatomic, strong) NSError *HTTPError;
 @property (readonly, nonatomic, assign) BOOL hasContent;
 @end
 
@@ -43,12 +43,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [_acceptableStatusCodes release];
-    [_acceptableContentTypes release];
-    [_HTTPError release];
-    [super dealloc];
-}
 
 - (NSHTTPURLResponse *)response {
     return (NSHTTPURLResponse *)[super response];
@@ -61,13 +55,13 @@
             [userInfo setValue:[NSString stringWithFormat:NSLocalizedString(@"Expected status code %@, got %d", nil), self.acceptableStatusCodes, [self.response statusCode]] forKey:NSLocalizedDescriptionKey];
             [userInfo setValue:[self.request URL] forKey:NSURLErrorFailingURLErrorKey];
             
-            self.HTTPError = [[[NSError alloc] initWithDomain:AFNetworkingErrorDomain code:NSURLErrorBadServerResponse userInfo:userInfo] autorelease];
+            self.HTTPError = [[NSError alloc] initWithDomain:AFNetworkingErrorDomain code:NSURLErrorBadServerResponse userInfo:userInfo];
         } else if ([self hasContent] && ![self hasAcceptableContentType]) { // Don't invalidate content type if there is no content
             NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
             [userInfo setValue:[NSString stringWithFormat:NSLocalizedString(@"Expected content type %@, got %@", nil), self.acceptableContentTypes, [self.response MIMEType]] forKey:NSLocalizedDescriptionKey];
             [userInfo setValue:[self.request URL] forKey:NSURLErrorFailingURLErrorKey];
             
-            self.HTTPError = [[[NSError alloc] initWithDomain:AFNetworkingErrorDomain code:NSURLErrorCannotDecodeContentData userInfo:userInfo] autorelease];
+            self.HTTPError = [[NSError alloc] initWithDomain:AFNetworkingErrorDomain code:NSURLErrorCannotDecodeContentData userInfo:userInfo];
         }
     }
     

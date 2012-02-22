@@ -22,8 +22,8 @@
 
 #import <Foundation/Foundation.h>
 
-static NSData * AFJSONEncode(id object, NSError **error) {
-    NSData *data = nil;
+static NSData * AFJSONEncode(id __unsafe_unretained object, NSError __unsafe_unretained **error) {
+    NSData __unsafe_unretained *data = nil;
     
     SEL _JSONKitSelector = NSSelectorFromString(@"JSONDataWithOptions:error:"); 
     SEL _SBJSONSelector = NSSelectorFromString(@"JSONRepresentation");
@@ -50,7 +50,7 @@ static NSData * AFJSONEncode(id object, NSError **error) {
         [invocation invoke];
         [invocation getReturnValue:&data];
     } else if (_SBJSONSelector && [object respondsToSelector:_SBJSONSelector]) {
-        NSString *JSONString = nil;
+        NSString __unsafe_unretained *JSONString = nil;
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[object methodSignatureForSelector:_SBJSONSelector]];
         invocation.target = object;
         invocation.selector = _SBJSONSelector;
@@ -61,7 +61,7 @@ static NSData * AFJSONEncode(id object, NSError **error) {
         data = [JSONString dataUsingEncoding:NSUTF8StringEncoding];
     } else if (_YAJLSelector && [object respondsToSelector:_YAJLSelector]) {
         @try {
-            NSString *JSONString = nil;
+            NSString __unsafe_unretained *JSONString = nil;
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[object methodSignatureForSelector:_YAJLSelector]];
             invocation.target = object;
             invocation.selector = _YAJLSelector;
@@ -72,7 +72,7 @@ static NSData * AFJSONEncode(id object, NSError **error) {
             data = [JSONString dataUsingEncoding:NSUTF8StringEncoding];
         }
         @catch (NSException *exception) {
-            *error = [[[NSError alloc] initWithDomain:NSStringFromClass([exception class]) code:0 userInfo:[exception userInfo]] autorelease];
+            *error = [[NSError alloc] initWithDomain:NSStringFromClass([exception class]) code:0 userInfo:[exception userInfo]];
         }
     } else if (_NSJSONSerializationClass && [_NSJSONSerializationClass respondsToSelector:_NSJSONSerializationSelector]) {
 #ifdef _AFNETWORKING_PREFER_NSJSONSERIALIZATION_
@@ -97,8 +97,8 @@ static NSData * AFJSONEncode(id object, NSError **error) {
     return data;
 }
 
-static id AFJSONDecode(NSData *data, NSError **error) {    
-    id JSON = nil;
+static id AFJSONDecode(NSData __unsafe_unretained *data, NSError __unsafe_unretained **error) {    
+    id __unsafe_unretained JSON = nil;
     
     SEL _JSONKitSelector = NSSelectorFromString(@"objectFromJSONDataWithParseOptions:error:"); 
     SEL _SBJSONSelector = NSSelectorFromString(@"JSONValue");
@@ -127,7 +127,7 @@ static id AFJSONDecode(NSData *data, NSError **error) {
         [invocation getReturnValue:&JSON];
     } else if (_SBJSONSelector && [NSString instancesRespondToSelector:_SBJSONSelector]) {
         // Create a string representation of JSON, to use SBJSON -`JSONValue` category method
-        NSString *string = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[string methodSignatureForSelector:_SBJSONSelector]];
         invocation.target = string;
         invocation.selector = _SBJSONSelector;

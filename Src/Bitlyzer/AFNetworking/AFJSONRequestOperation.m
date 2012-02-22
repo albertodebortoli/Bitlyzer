@@ -34,7 +34,7 @@ static dispatch_queue_t json_request_operation_processing_queue() {
 
 @interface AFJSONRequestOperation ()
 @property (readwrite, nonatomic, retain) id responseJSON;
-@property (readwrite, nonatomic, retain) NSError *JSONError;
+@property (readwrite, nonatomic, strong) NSError *JSONError;
 
 + (NSSet *)defaultAcceptableContentTypes;
 + (NSSet *)defaultAcceptablePathExtensions;
@@ -48,7 +48,7 @@ static dispatch_queue_t json_request_operation_processing_queue() {
                                                     success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success 
                                                     failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure
 {
-    AFJSONRequestOperation *requestOperation = [[[self alloc] initWithRequest:urlRequest] autorelease];
+    AFJSONRequestOperation *requestOperation = [[self alloc] initWithRequest:urlRequest];
     [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
             success(operation.request, operation.response, responseObject);
@@ -85,15 +85,10 @@ static dispatch_queue_t json_request_operation_processing_queue() {
     return self;
 }
 
-- (void)dealloc {
-    [_responseJSON release];
-    [_JSONError release];
-    [super dealloc];
-}
 
 - (id)responseJSON {
     if (!_responseJSON && [self isFinished]) {
-        NSError *error = nil;
+        NSError __unsafe_unretained *error = nil;
 
         if ([self.responseData length] == 0) {
             self.responseJSON = nil;

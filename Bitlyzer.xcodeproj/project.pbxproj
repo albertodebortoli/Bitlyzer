@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		D3178D0814F594A400AA9C47 /* Bitlyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3178CFE14F594A400AA9C47 /* Bitlyzer.m */; };
-		D3178D0914F594A400AA9C47 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3178D0114F594A400AA9C47 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D3178D0A14F594A400AA9C47 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3178D0314F594A400AA9C47 /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D3178D0B14F594A400AA9C47 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3178D0614F594A400AA9C47 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D3178D0914F594A400AA9C47 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3178D0114F594A400AA9C47 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = ""; }; };
+		D3178D0A14F594A400AA9C47 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3178D0314F594A400AA9C47 /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = ""; }; };
+		D3178D0B14F594A400AA9C47 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3178D0614F594A400AA9C47 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = ""; }; };
 		D37AF5FF14F5898200296890 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AF5FE14F5898200296890 /* UIKit.framework */; };
 		D37AF60114F5898200296890 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AF60014F5898200296890 /* Foundation.framework */; };
 		D37AF60314F5898200296890 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AF60214F5898200296890 /* CoreGraphics.framework */; };
-		D37AF63014F58BAE00296890 /* Bitlyzer-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D37AF62D14F58BAE00296890 /* Bitlyzer-Info.plist */; };
 		D37AF63114F58BAE00296890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D37AF62E14F58BAE00296890 /* main.m */; };
 		D37AF64B14F58BFC00296890 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D37AF64414F58BFC00296890 /* AppDelegate.m */; settings = {COMPILER_FLAGS = ""; }; };
 		D37AF64D14F58BFC00296890 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D37AF64614F58BFC00296890 /* ViewController.m */; settings = {COMPILER_FLAGS = ""; }; };
@@ -198,7 +197,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D37AF63014F58BAE00296890 /* Bitlyzer-Info.plist in Resources */,
 				D37AF64E14F58BFC00296890 /* ViewController.xib in Resources */,
 				D37AF67E14F58F0500296890 /* InfoPlist.strings in Resources */,
 			);
