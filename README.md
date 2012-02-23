@@ -5,19 +5,22 @@ Try out the included demo project!
 
 Simple usage:
 
+- copy Src folder into your project
 - set your Bitly API username and key in Bitlyzer.m 
 - import Bitlyzer.h in your class
 - use Bitlyzer using blocks
 
-Bitlyzer *bitlyzer = [[Bitlyzer alloc] init];
-[bitlyzer shortURL:@"http://albertodebortoli.it"
-         succeeded:^(NSString *urlToBitly, NSString *shortenURL) { }
-              fail:^(NSString *urlToBitly, NSError *error) { }];
+`Bitlyzer *bitlyzer = [[Bitlyzer alloc] init];`
+
+`[bitlyzer shortURL:@"http://albertodebortoli.it"
+succeeded:^(NSString *urlToBitly, NSString *shortenURL) { }
+fail:^(NSString *urlToBitly, NSError *error) { }];`
 
 - or use Bitlyzer using delegation pattern
 
-Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithDelegate:self];
-[bitlyzer shortURL:@"http://albertodebortoli.it"];
+`Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithDelegate:self];`
+
+`[bitlyzer shortURL:@"http://albertodebortoli.it"];`
 
 
 # License
