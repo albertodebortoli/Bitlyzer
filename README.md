@@ -7,7 +7,7 @@ Simple usage:
 
 - copy Src folder into your project
 - set your Bitly API username and key in Bitlyzer.m 
-- import Bitlyzer.h in your class
+- import `Bitlyzer.h` in your class
 - use Bitlyzer using blocks
 
 ``` objective-c
@@ -17,13 +17,19 @@ Bitlyzer *bitlyzer = [[Bitlyzer alloc] init];
               fail:^(NSString *urlToBitly, NSError *error) { }];
 ```
 
-- or use Bitlyzer using delegation pattern
+- or use Bitlyzer using delegation pattern implementing `BitlyzerDelegate` protocol and related optional delegate methods
 
 ``` objective-c
 Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithDelegate:self];
 [bitlyzer shortURL:@"http://albertodebortoli.it"];
 ```
 
+``` objective-c
+#pragma mark - BitlyzerDelegate
+- (void)bitlyReturnedOkForURL:(NSString *)urlString shortenURL:(NSString *)shortenURL { ... }
+- (void)bitlyReturnedErrorForURL:(NSString *)urlString { ... }
+- (void)bitlyUnreachableForURL:(NSString *)urlString { ... }
+```
 
 # License
 
