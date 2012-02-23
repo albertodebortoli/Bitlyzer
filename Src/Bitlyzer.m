@@ -38,20 +38,46 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSUInteger statusCode = [[JSON valueForKeyPath:@"status_code"] integerValue];
-        if (statusCode != 200) {
-            if ([_delegate respondsToSelector:@selector(bitlyReturnedErrorForURL:)]) {
-                [_delegate bitlyReturnedErrorForURL:urlToBitly];
-            }
-        } else {
+        if (statusCode == 200) {
             NSString *shortenURL = [[JSON valueForKeyPath:@"data"] valueForKey:@"url"];
             if ([_delegate respondsToSelector:@selector(bitlyReturnedOkForURL:shortenURL:)]) {
                 [_delegate bitlyReturnedOkForURL:urlToBitly shortenURL:shortenURL];
+            }
+        } else {
+            if ([_delegate respondsToSelector:@selector(bitlyReturnedErrorForURL:)]) {
+                [_delegate bitlyReturnedErrorForURL:urlToBitly];
             }
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         if ([_delegate respondsToSelector:@selector(bitlyUnreachableForURL:)]) {
             [_delegate bitlyUnreachableForURL:urlToBitly];
         }
+    }];
+    
+    [operationQueue addOperation:operation];
+}
+
+- (void)shortURL:(NSString *)urlToBitly succeeded:(SuccessBlock)success fail:(FailBlock)fail
+{
+    NSOperationQueue *operationQueue = [[NSOperationQueue alloc] init];
+    
+    NSString *urlString = [NSString stringWithFormat:kBitlyAPIURL, kBitlyAPIUsername, kBitlyAPIKey, urlToBitly];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    NSError __block *error = nil;
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+       success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSUInteger statusCode = [[JSON valueForKeyPath:@"status_code"] integerValue];
+        if (statusCode == 200) {
+            NSString *shortenURL = [[JSON valueForKeyPath:@"data"] valueForKey:@"url"];
+            success(urlToBitly, shortenURL);
+        } else {
+            error = [NSError errorWithDomain:@"BitlyzerDomain" code:400 userInfo:nil];
+            fail(urlToBitly, error);
+        }
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        error = [NSError errorWithDomain:@"BitlyzerDomain" code:404 userInfo:nil];
+        fail(urlToBitly, error);
     }];
     
     [operationQueue addOperation:operation];

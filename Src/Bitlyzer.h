@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^SuccessBlock)(NSString *urlToBitly, NSString *shortenURL);
+typedef void (^FailBlock)(NSString *urlToBitly, NSError *error);
+
 @protocol BitlyzerDelegate <NSObject>
 @optional
 - (void)bitlyReturnedOkForURL:(NSString *)urlString shortenURL:(NSString *)shortenURL;
@@ -24,6 +27,7 @@
 
 - (id)initWithDelegate:(id <BitlyzerDelegate>)delegate;
 - (void)shortURL:(NSString *)urlToBitly;
+- (void)shortURL:(NSString *)urlToBitly succeeded:(SuccessBlock)success fail:(FailBlock)fail;
 
 @property (nonatomic, unsafe_unretained) id <BitlyzerDelegate> delegate;
 

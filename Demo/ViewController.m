@@ -39,6 +39,22 @@
     [bitlyzer shortURL:textField.text];
 }
 
+- (IBAction)shortUrlUsingBlocksAction:(id)sender
+{
+    Bitlyzer *bitlyzer = [[Bitlyzer alloc] init];
+    [bitlyzer shortURL:textField.text
+      succeeded:^(NSString *urlToBitly, NSString *shortenURL) {
+        [self bitlyReturnedOkForURL:urlToBitly shortenURL:shortenURL];
+    } fail:^(NSString *urlToBitly, NSError *error) {
+        NSLog(@"%@", [error description]);
+        if (error.code == 404) {
+            [self bitlyUnreachableForURL:urlToBitly];
+        } else {
+            [self bitlyReturnedErrorForURL:urlToBitly];
+        }
+    }];
+}
+
 #pragma mark - IWLBitlyzerDelegate
 
 - (void)bitlyReturnedOkForURL:(NSString *)urlString shortenURL:(NSString *)shortenURL 

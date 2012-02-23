@@ -16,5 +16,6 @@
 }
 
 - (IBAction)shortUrlAction:(id)sender;
+- (IBAction)shortUrlUsingBlocksAction:(id)sender;
 
 @end
