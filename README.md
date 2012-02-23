@@ -10,17 +10,19 @@ Simple usage:
 - import Bitlyzer.h in your class
 - use Bitlyzer using blocks
 
-`Bitlyzer *bitlyzer = [[Bitlyzer alloc] init];`
-
-`[bitlyzer shortURL:@"http://albertodebortoli.it"
-succeeded:^(NSString *urlToBitly, NSString *shortenURL) { }
-fail:^(NSString *urlToBitly, NSError *error) { }];`
+``` objective-c
+Bitlyzer *bitlyzer = [[Bitlyzer alloc] init];
+[bitlyzer shortURL:@"http://albertodebortoli.it"
+         succeeded:^(NSString *urlToBitly, NSString *shortenURL) { }
+              fail:^(NSString *urlToBitly, NSError *error) { }];
+```
 
 - or use Bitlyzer using delegation pattern
 
-`Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithDelegate:self];`
-
-`[bitlyzer shortURL:@"http://albertodebortoli.it"];`
+``` objective-c
+Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithDelegate:self];
+[bitlyzer shortURL:@"http://albertodebortoli.it"];
+```
 
 
 # License
