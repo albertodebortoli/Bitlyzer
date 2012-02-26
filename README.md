@@ -28,8 +28,12 @@ Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithDelegate:self];
 #pragma mark - BitlyzerDelegate
 - (void)bitlyReturnedOkForURL:(NSString *)urlString shortenURL:(NSString *)shortenURL { ... }
 - (void)bitlyReturnedErrorForURL:(NSString *)urlString { ... }
-- (void)bitlyUnreachableForURL:(NSString *)urlString { ... }
 ```
+
+Bitly response parsing is done using NSJSONSerializtion available in iOS 5 and later. If you need support for previous iOS versions you need to modify `Bitlyzer.m` and use your preferred JSON parser (line 105). 
+
+![1](http://www.albertodebortoli.it/GitHub/Bitlyzer/screenshot1.png) 
+![2](http://www.albertodebortoli.it/GitHub/Bitlyzer/screenshot2.png)
 
 # License
 
