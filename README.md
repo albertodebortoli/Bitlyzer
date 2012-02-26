@@ -32,8 +32,8 @@ Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithDelegate:self];
 
 Bitly response parsing is done using NSJSONSerializtion available in iOS 5 and later. If you need support for previous iOS versions you need to modify `Bitlyzer.m` and use your preferred JSON parser (line 105). 
 
-![1](http://www.albertodebortoli.it/GitHub/Bitlyzer/screenshot1.png)
-![2](http://www.albertodebortoli.it/GitHub/Bitlyzer/screenshot2.png)
+![1](http://www.albertodebortoli.it/GitHub/Bitlyzer/ss1.png)
+![2](http://www.albertodebortoli.it/GitHub/Bitlyzer/ss2.png)
 
 # License
 
