@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D320256114F5A34700E7753C /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D320255914F5A34700E7753C /* AFHTTPRequestOperation.m */; };
-		D320256214F5A34700E7753C /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D320255B14F5A34700E7753C /* AFJSONRequestOperation.m */; };
-		D320256314F5A34700E7753C /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D320255E14F5A34700E7753C /* AFURLConnectionOperation.m */; };
 		D320256414F5A34700E7753C /* Bitlyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = D320256014F5A34700E7753C /* Bitlyzer.m */; };
 		D37AF5FF14F5898200296890 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AF5FE14F5898200296890 /* UIKit.framework */; };
 		D37AF60114F5898200296890 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AF60014F5898200296890 /* Foundation.framework */; };
@@ -22,14 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D320255814F5A34700E7753C /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = ../Src/AFNetworking/AFHTTPRequestOperation.h; sourceTree = SOURCE_ROOT; };
-		D320255914F5A34700E7753C /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = ../Src/AFNetworking/AFHTTPRequestOperation.m; sourceTree = SOURCE_ROOT; };
-		D320255A14F5A34700E7753C /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFJSONRequestOperation.h; path = ../Src/AFNetworking/AFJSONRequestOperation.h; sourceTree = SOURCE_ROOT; };
-		D320255B14F5A34700E7753C /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFJSONRequestOperation.m; path = ../Src/AFNetworking/AFJSONRequestOperation.m; sourceTree = SOURCE_ROOT; };
-		D320255C14F5A34700E7753C /* AFJSONUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFJSONUtilities.h; path = ../Src/AFNetworking/AFJSONUtilities.h; sourceTree = SOURCE_ROOT; };
-		D320255D14F5A34700E7753C /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = ../Src/AFNetworking/AFURLConnectionOperation.h; sourceTree = SOURCE_ROOT; };
-		D320255E14F5A34700E7753C /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = ../Src/AFNetworking/AFURLConnectionOperation.m; sourceTree = SOURCE_ROOT; };
-		D320255F14F5A34700E7753C /* Bitlyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; name = Bitlyzer.h; path = ../Src/Bitlyzer.h; sourceTree = SOURCE_ROOT; };
+		D320255F14F5A34700E7753C /* Bitlyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bitlyzer.h; path = ../Src/Bitlyzer.h; sourceTree = SOURCE_ROOT; };
 		D320256014F5A34700E7753C /* Bitlyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bitlyzer.m; path = ../Src/Bitlyzer.m; sourceTree = SOURCE_ROOT; };
 		D37AF5FA14F5898200296890 /* Bitlyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitlyzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37AF5FE14F5898200296890 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -63,26 +53,11 @@
 		D320255614F5A34700E7753C /* Src */ = {
 			isa = PBXGroup;
 			children = (
-				D320255714F5A34700E7753C /* AFNetworking */,
 				D320255F14F5A34700E7753C /* Bitlyzer.h */,
 				D320256014F5A34700E7753C /* Bitlyzer.m */,
 			);
 			name = Src;
 			path = ../../Src;
-			sourceTree = "<group>";
-		};
-		D320255714F5A34700E7753C /* AFNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				D320255814F5A34700E7753C /* AFHTTPRequestOperation.h */,
-				D320255914F5A34700E7753C /* AFHTTPRequestOperation.m */,
-				D320255A14F5A34700E7753C /* AFJSONRequestOperation.h */,
-				D320255B14F5A34700E7753C /* AFJSONRequestOperation.m */,
-				D320255C14F5A34700E7753C /* AFJSONUtilities.h */,
-				D320255D14F5A34700E7753C /* AFURLConnectionOperation.h */,
-				D320255E14F5A34700E7753C /* AFURLConnectionOperation.m */,
-			);
-			path = AFNetworking;
 			sourceTree = "<group>";
 		};
 		D37AF5EF14F5898200296890 = {
@@ -211,9 +186,6 @@
 				D37AF63114F58BAE00296890 /* main.m in Sources */,
 				D3AF428714F5A2F500523C73 /* AppDelegate.m in Sources */,
 				D3AF428814F5A2F500523C73 /* ViewController.m in Sources */,
-				D320256114F5A34700E7753C /* AFHTTPRequestOperation.m in Sources */,
-				D320256214F5A34700E7753C /* AFJSONRequestOperation.m in Sources */,
-				D320256314F5A34700E7753C /* AFURLConnectionOperation.m in Sources */,
 				D320256414F5A34700E7753C /* Bitlyzer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

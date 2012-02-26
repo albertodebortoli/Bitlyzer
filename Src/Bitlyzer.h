@@ -14,13 +14,14 @@ typedef void (^FailBlock)(NSString *urlToBitly, NSError *error);
 @protocol BitlyzerDelegate <NSObject>
 @optional
 - (void)bitlyReturnedOkForURL:(NSString *)urlString shortenURL:(NSString *)shortenURL;
-- (void)bitlyReturnedErrorForURL:(NSString *)urlString;
-- (void)bitlyUnreachableForURL:(NSString *)urlString;
+- (void)bitlyReturnedError:(NSError *)error forURL:(NSString *)urlString;
 @end
 
 
-@interface Bitlyzer : NSObject {
-    id <BitlyzerDelegate>  __unsafe_unretained _delegate;
+@interface Bitlyzer : NSObject <NSURLConnectionDelegate> {
+    id <BitlyzerDelegate>  __unsafe_unretained  _delegate;
+    NSMutableData                               *_receivedData;
+    NSString                                    *_urlToBitly;
 }
 
 #pragma mark - instance methods

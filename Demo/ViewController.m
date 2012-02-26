@@ -28,7 +28,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Actions
@@ -46,12 +46,7 @@
       succeeded:^(NSString *urlToBitly, NSString *shortenURL) {
         [self bitlyReturnedOkForURL:urlToBitly shortenURL:shortenURL];
     } fail:^(NSString *urlToBitly, NSError *error) {
-        NSLog(@"%@", [error description]);
-        if (error.code == 404) {
-            [self bitlyUnreachableForURL:urlToBitly];
-        } else {
-            [self bitlyReturnedErrorForURL:urlToBitly];
-        }
+        [self bitlyReturnedError:error forURL:urlToBitly];
     }];
 }
 
@@ -59,7 +54,9 @@
 
 - (void)bitlyReturnedOkForURL:(NSString *)urlString shortenURL:(NSString *)shortenURL 
 {
+    NSLog(@"URL %@ shorten into %@", urlString, shortenURL);
     shortenURLLabel.text = shortenURL;
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ok"
                                                     message:[NSString stringWithFormat:@"URL %@ shorten into %@", urlString, shortenURL]
                                                    delegate:nil
@@ -68,20 +65,12 @@
     [alert show];
 }
 
-- (void)bitlyReturnedErrorForURL:(NSString *)urlString
+- (void)bitlyReturnedError:(NSError *)error forURL:(NSString *)urlString
 {
+    NSLog(@"%@", [error description]);
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                     message:[NSString stringWithFormat:@"Can't short URL %@", urlString]
-                                                   delegate:nil
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:@"Ok", nil];
-    [alert show];
-}
-
-- (void)bitlyUnreachableForURL:(NSString *)urlString
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:@"Bit.ly unreachable"
                                                    delegate:nil
                                           cancelButtonTitle:nil
                                           otherButtonTitles:@"Ok", nil];
