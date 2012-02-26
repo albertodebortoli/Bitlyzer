@@ -21,14 +21,14 @@
 /* Begin PBXFileReference section */
 		D320255F14F5A34700E7753C /* Bitlyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bitlyzer.h; path = ../Src/Bitlyzer.h; sourceTree = SOURCE_ROOT; };
 		D320256014F5A34700E7753C /* Bitlyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bitlyzer.m; path = ../Src/Bitlyzer.m; sourceTree = SOURCE_ROOT; };
-		D37AF5FA14F5898200296890 /* Bitlyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bitlyzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D37AF5FA14F5898200296890 /* BitlyzerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitlyzerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37AF5FE14F5898200296890 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D37AF60014F5898200296890 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D37AF60214F5898200296890 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D37AF62D14F58BAE00296890 /* Bitlyzer-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Bitlyzer-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D37AF62E14F58BAE00296890 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
-		D37AF62F14F58BAE00296890 /* Bitlyzer-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bitlyzer-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		D37AF67D14F58F0500296890 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		D3AE9D7F14FA8409002E9779 /* BitlyzerDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BitlyzerDemo-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D3AE9D8014FA8409002E9779 /* BitlyzerDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BitlyzerDemo-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		D3AF428214F5A2F500523C73 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		D3AF428314F5A2F500523C73 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = SOURCE_ROOT; };
 		D3AF428414F5A2F500523C73 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -72,7 +72,7 @@
 		D37AF5FB14F5898200296890 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D37AF5FA14F5898200296890 /* Bitlyzer.app */,
+				D37AF5FA14F5898200296890 /* BitlyzerDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,9 +105,9 @@
 			isa = PBXGroup;
 			children = (
 				D37AF63214F58BCB00296890 /* en.lproj */,
-				D37AF62D14F58BAE00296890 /* Bitlyzer-Info.plist */,
+				D3AE9D7F14FA8409002E9779 /* BitlyzerDemo-Info.plist */,
+				D3AE9D8014FA8409002E9779 /* BitlyzerDemo-Prefix.pch */,
 				D37AF62E14F58BAE00296890 /* main.m */,
-				D37AF62F14F58BAE00296890 /* Bitlyzer-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -123,9 +123,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D37AF5F914F5898200296890 /* Bitlyzer */ = {
+		D37AF5F914F5898200296890 /* BitlyzerDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D37AF61814F5898300296890 /* Build configuration list for PBXNativeTarget "Bitlyzer" */;
+			buildConfigurationList = D37AF61814F5898300296890 /* Build configuration list for PBXNativeTarget "BitlyzerDemo" */;
 			buildPhases = (
 				D37AF5F614F5898200296890 /* Sources */,
 				D37AF5F714F5898200296890 /* Frameworks */,
@@ -135,9 +135,9 @@
 			);
 			dependencies = (
 			);
-			name = Bitlyzer;
+			name = BitlyzerDemo;
 			productName = Bitlyzer;
-			productReference = D37AF5FA14F5898200296890 /* Bitlyzer.app */;
+			productReference = D37AF5FA14F5898200296890 /* BitlyzerDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -149,7 +149,7 @@
 				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = "H-umus";
 			};
-			buildConfigurationList = D37AF5F414F5898200296890 /* Build configuration list for PBXProject "Bitlyzer" */;
+			buildConfigurationList = D37AF5F414F5898200296890 /* Build configuration list for PBXProject "BitlyzerDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -161,7 +161,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D37AF5F914F5898200296890 /* Bitlyzer */,
+				D37AF5F914F5898200296890 /* BitlyzerDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -254,10 +254,10 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Bitlyzer-Prefix.pch";
+				GCC_PREFIX_HEADER = "BitlyzerDemo-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "Bitlyzer-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "BitlyzerDemo-Info.plist";
+				PRODUCT_NAME = BitlyzerDemo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -267,10 +267,10 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Bitlyzer-Prefix.pch";
+				GCC_PREFIX_HEADER = "BitlyzerDemo-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "Bitlyzer-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "BitlyzerDemo-Info.plist";
+				PRODUCT_NAME = BitlyzerDemo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -278,7 +278,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D37AF5F414F5898200296890 /* Build configuration list for PBXProject "Bitlyzer" */ = {
+		D37AF5F414F5898200296890 /* Build configuration list for PBXProject "BitlyzerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D37AF61614F5898300296890 /* Debug */,
@@ -287,7 +287,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D37AF61814F5898300296890 /* Build configuration list for PBXNativeTarget "Bitlyzer" */ = {
+		D37AF61814F5898300296890 /* Build configuration list for PBXNativeTarget "BitlyzerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D37AF61914F5898300296890 /* Debug */,

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Bitlyzer.xcodeproj">
+      location = "self:BitlyzerDemo.xcodeproj">
    </FileRef>
 </Workspace>
