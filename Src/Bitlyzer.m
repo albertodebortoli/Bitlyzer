@@ -13,16 +13,15 @@
 #define kBitlyAPIUsername        @""
 #define kBitlyAPIKey             @""
 
-static SuccessBlock _successBlock;
-static FailBlock _failBlock;
-
-@interface Bitlyzer (Private)
+@interface Bitlyzer ()
+@property (nonatomic, strong) NSMutableData *receivedData;
+@property (nonatomic, copy) NSString *urlToBitly;
+@property (nonatomic, strong) SuccessBlock successBlock;
+@property (nonatomic, strong) FailBlock failBlock;
 - (void)startRequest;
 @end
 
 @implementation Bitlyzer
-
-@synthesize delegate = _delegate;
 
 #pragma mark - Designated initializer
 
@@ -39,16 +38,16 @@ static FailBlock _failBlock;
 
 - (void)shortURL:(NSString *)urlToBitly
 {
-    _urlToBitly = [urlToBitly copy];
+    self.urlToBitly = [urlToBitly copy];
     
     [self startRequest];
 }
 
 - (void)shortURL:(NSString *)urlToBitly succeeded:(SuccessBlock)success fail:(FailBlock)fail
 {
-    _successBlock = [success copy];
-    _failBlock = [fail copy];
-    _urlToBitly = [urlToBitly copy];
+    self.successBlock = success;
+    self.failBlock = fail;
+    self.urlToBitly = urlToBitly;
     
     [self startRequest];
 }
@@ -57,15 +56,15 @@ static FailBlock _failBlock;
 
 - (void)startRequest
 {
-    NSString *urlString = [NSString stringWithFormat:kBitlyAPIURL, kBitlyAPIUsername, kBitlyAPIKey, _urlToBitly];
+    NSString *urlString = [NSString stringWithFormat:kBitlyAPIURL, kBitlyAPIUsername, kBitlyAPIKey, self.urlToBitly];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
     if (urlConnection) {
-        _receivedData = [NSMutableData data];
+        self.receivedData = [NSMutableData data];
     } else {
         if ([_delegate respondsToSelector:@selector(bitlyReturnedError:forURL:)]) {
-            [_delegate bitlyReturnedError:nil forURL:_urlToBitly];
+            [_delegate bitlyReturnedError:nil forURL:self.urlToBitly];
         }
     }
 }
@@ -74,68 +73,68 @@ static FailBlock _failBlock;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    [_receivedData setLength:0];
+    [self.receivedData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    [_receivedData appendData:data];
+    [self.receivedData appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection
   didFailWithError:(NSError *)error
 {
-    if (_failBlock) {
+    if (self.failBlock) {
         // use blocks
-        _failBlock(_urlToBitly, error);
+        self.failBlock(self.urlToBitly, error);
     }
     else {
         // use delegation
         if ([_delegate respondsToSelector:@selector(bitlyReturnedError:forURL:)]) {
-            [_delegate bitlyReturnedError:error forURL:_urlToBitly];
+            [_delegate bitlyReturnedError:error forURL:self.urlToBitly];
         }
     }
     
-    _successBlock = nil;
-    _failBlock = nil;
+    self.successBlock = nil;
+    self.failBlock = nil;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:_receivedData options:kNilOptions error:nil];
+    NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:self.receivedData options:kNilOptions error:nil];
     
     NSUInteger statusCode = [[JSON valueForKeyPath:@"status_code"] integerValue];
     if (statusCode == 200) {
         NSString *shortenURL = [[JSON valueForKeyPath:@"data"] valueForKey:@"url"];
         
-        if (_successBlock) {
+        if (self.successBlock) {
             // use blocks
-            _successBlock(_urlToBitly, shortenURL);
+            self.successBlock(self.urlToBitly, shortenURL);
         }
         else {
             // use delegation
             if ([_delegate respondsToSelector:@selector(bitlyReturnedOkForURL:shortenURL:)]) {
-                [_delegate bitlyReturnedOkForURL:_urlToBitly shortenURL:shortenURL];
+                [_delegate bitlyReturnedOkForURL:self.urlToBitly shortenURL:shortenURL];
             }
         }
     } else {
-        NSDictionary *errorDictionary = [NSDictionary dictionaryWithObject:[JSON valueForKeyPath:@"status_txt"] forKey:@"Bitly Error"];
+        NSDictionary *errorDictionary = @{@"Bitly Error": [JSON valueForKeyPath:@"status_txt"]};
         NSError __block *error = [NSError errorWithDomain:@"BitlyzerDomain" code:500 userInfo:errorDictionary];
         
-        if (_failBlock) {
+        if (self.failBlock) {
             // use blocks
-            _failBlock(_urlToBitly, error);
+            self.failBlock(self.urlToBitly, error);
         }
         else {
             // use delegation
             if ([_delegate respondsToSelector:@selector(bitlyReturnedError:forURL:)]) {
-                [_delegate bitlyReturnedError:error forURL:_urlToBitly];
+                [_delegate bitlyReturnedError:error forURL:self.urlToBitly];
             }
         }
     }
     
-    _successBlock = nil;
-    _failBlock = nil;
+    self.successBlock = nil;
+    self.failBlock = nil;
 }
 
 @end

@@ -18,11 +18,7 @@ typedef void (^FailBlock)(NSString *urlToBitly, NSError *error);
 @end
 
 
-@interface Bitlyzer : NSObject <NSURLConnectionDelegate> {
-    id <BitlyzerDelegate>  __unsafe_unretained  _delegate;
-    NSMutableData                               *_receivedData;
-    NSString                                    *_urlToBitly;
-}
+@interface Bitlyzer : NSObject <NSURLConnectionDelegate>
 
 #pragma mark - instance methods
 
