@@ -1,6 +1,7 @@
 //
 //  Bitlyzer.m
 //  Bitlyzer
+//  v1.0.0
 //
 //  Created by Alberto De Bortoli on 22/02/12.
 //  Copyright (c) 2012 Alberto De Bortoli. All rights reserved.
@@ -8,10 +9,11 @@
 
 #import "Bitlyzer.h"
 
-#define kBitlyAPIURL             @"https://api-ssl.bitly.com/v3/shorten?login=%@&apiKey=%@&longUrl=%@&format=json"
 #warning set here your API login and key here, then remove this line
 #define kBitlyAPIUsername        @""
 #define kBitlyAPIKey             @""
+
+#define kBitlyAPIURL             @"https://api-ssl.bitly.com/v3/shorten?login=%@&apiKey=%@&longUrl=%@&format=json"
 
 @interface Bitlyzer ()
 @property (nonatomic, strong) NSMutableData *receivedData;

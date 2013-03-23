@@ -1,6 +1,7 @@
 //
 //  Bitlyzer.h
 //  Bitlyzer
+//  v1.0.0
 //
 //  Created by Alberto De Bortoli on 22/02/12.
 //  Copyright (c) 2012 Alberto De Bortoli. All rights reserved.

@@ -3,6 +3,8 @@
 Class to shorten URLs with Bit.ly on iOS (both block based and delegate based using ARC).
 Try out the included demo project!
 
+If you'd like to include this component as a pod using [CocoaPods](http://cocoapods.org/), just add the following line to your Podfile: `pod "Bitlyzer"`
+
 Simple usage:
 
 - copy Src folder into your project
