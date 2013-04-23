@@ -1,17 +1,13 @@
 //
 //  Bitlyzer.m
 //  Bitlyzer
-//  v1.0.0
+//  v1.1.0
 //
 //  Created by Alberto De Bortoli on 22/02/12.
 //  Copyright (c) 2012 Alberto De Bortoli. All rights reserved.
 //
 
 #import "Bitlyzer.h"
-
-#warning set here your API login and key here, then remove this line
-#define kBitlyAPIUsername        @""
-#define kBitlyAPIKey             @""
 
 #define kBitlyAPIURL             @"https://api-ssl.bitly.com/v3/shorten?login=%@&apiKey=%@&longUrl=%@&format=json"
 
@@ -27,10 +23,22 @@
 
 #pragma mark - Designated initializer
 
-- (id)initWithDelegate:(id <BitlyzerDelegate>)delegate
+- (id)initWithAPIKey:(NSString *)APIKey username:(NSString *)username
 {
     self = [super init];
     if (self) {
+        _APIKey = APIKey;
+        _username = username;
+    }
+    return self;
+}
+
+- (id)initWithAPIKey:(NSString *)APIKey username:(NSString *)username delegate:(id <BitlyzerDelegate>)delegate
+{
+    self = [super init];
+    if (self) {
+        _APIKey = APIKey;
+        _username = username;
         _delegate = delegate;
     }
     return self;
@@ -58,7 +66,7 @@
 
 - (void)startRequest
 {
-    NSString *urlString = [NSString stringWithFormat:kBitlyAPIURL, kBitlyAPIUsername, kBitlyAPIKey, self.urlToBitly];
+    NSString *urlString = [NSString stringWithFormat:kBitlyAPIURL, self.username, self.APIKey, self.urlToBitly];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     

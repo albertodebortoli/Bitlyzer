@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 
+#define kBitlyAPIUsername        @""
+#define kBitlyAPIKey             @""
+
 @implementation ViewController
 
 #pragma mark - View lifecycle
@@ -28,13 +31,13 @@
 
 - (IBAction)shortUrlAction:(id)sender
 {
-    Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithDelegate:self];
+    Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithAPIKey:kBitlyAPIKey username:kBitlyAPIUsername delegate:self];
     [bitlyzer shortURL:textField.text];
 }
 
 - (IBAction)shortUrlUsingBlocksAction:(id)sender
 {
-    Bitlyzer *bitlyzer = [[Bitlyzer alloc] init];
+    Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithAPIKey:kBitlyAPIKey username:kBitlyAPIUsername];
     [bitlyzer shortURL:textField.text
       succeeded:^(NSString *urlToBitly, NSString *shortenURL) {
         [self bitlyReturnedOkForURL:urlToBitly shortenURL:shortenURL];
