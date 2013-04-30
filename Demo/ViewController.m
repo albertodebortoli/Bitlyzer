@@ -11,6 +11,12 @@
 #define kBitlyAPIUsername        @""
 #define kBitlyAPIKey             @""
 
+@interface ViewController ()
+
+- (void)_showAlertForMissingCredentials;
+
+@end
+
 @implementation ViewController
 
 #pragma mark - View lifecycle
@@ -31,24 +37,35 @@
 
 - (IBAction)shortUrlAction:(id)sender
 {
-    Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithAPIKey:kBitlyAPIKey username:kBitlyAPIUsername delegate:self];
-    [bitlyzer shortURL:textField.text];
+    @try {
+        Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithAPIKey:kBitlyAPIKey username:kBitlyAPIUsername delegate:self];
+        [bitlyzer shortURL:textField.text];
+    }
+    @catch (NSException *exception) {
+        [self _showAlertForMissingCredentials];
+    }
 }
 
 - (IBAction)shortUrlUsingBlocksAction:(id)sender
 {
-    Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithAPIKey:kBitlyAPIKey username:kBitlyAPIUsername];
-    [bitlyzer shortURL:textField.text
-      succeeded:^(NSString *urlToBitly, NSString *shortenURL) {
-        [self bitlyReturnedOkForURL:urlToBitly shortenURL:shortenURL];
-    } fail:^(NSString *urlToBitly, NSError *error) {
-        [self bitlyReturnedError:error forURL:urlToBitly];
-    }];
+    @try {
+        Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithAPIKey:kBitlyAPIKey username:kBitlyAPIUsername];
+        [bitlyzer shortURL:textField.text
+                 succeeded:^(NSString *urlToBitly, NSString *shortenURL) {
+                     [self bitlyReturnedOkForURL:urlToBitly shortenURL:shortenURL];
+                 } fail:^(NSString *urlToBitly, NSError *error) {
+                     [self bitlyReturnedError:error forURL:urlToBitly];
+                 }];
+    }
+    @catch (NSException *exception) {
+        [self _showAlertForMissingCredentials];
+    }
+    
 }
 
 #pragma mark - IWLBitlyzerDelegate
 
-- (void)bitlyReturnedOkForURL:(NSString *)urlString shortenURL:(NSString *)shortenURL 
+- (void)bitlyReturnedOkForURL:(NSString *)urlString shortenURL:(NSString *)shortenURL
 {
     NSLog(@"URL %@ shorten into %@", urlString, shortenURL);
     shortenURLLabel.text = shortenURL;
@@ -67,6 +84,18 @@
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                     message:[NSString stringWithFormat:@"Can't short URL %@", urlString]
+                                                   delegate:nil
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"Ok", nil];
+    [alert show];
+}
+
+#pragma mark - Private
+
+- (void)_showAlertForMissingCredentials
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Missing credentials"
+                                                    message:@"Set your Bitly username and API key in ViewController.m"
                                                    delegate:nil
                                           cancelButtonTitle:nil
                                           otherButtonTitles:@"Ok", nil];

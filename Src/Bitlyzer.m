@@ -1,7 +1,7 @@
 //
 //  Bitlyzer.m
 //  Bitlyzer
-//  v1.1.0
+//  v1.1.1
 //
 //  Created by Alberto De Bortoli on 22/02/12.
 //  Copyright (c) 2012 Alberto De Bortoli. All rights reserved.
@@ -12,11 +12,16 @@
 #define kBitlyAPIURL             @"https://api-ssl.bitly.com/v3/shorten?login=%@&apiKey=%@&longUrl=%@&format=json"
 
 @interface Bitlyzer ()
+
 @property (nonatomic, strong) NSMutableData *receivedData;
 @property (nonatomic, copy) NSString *urlToBitly;
-@property (nonatomic, strong) SuccessBlock successBlock;
-@property (nonatomic, strong) FailBlock failBlock;
+@property (nonatomic, copy) SuccessBlock successBlock;
+@property (nonatomic, copy) FailBlock failBlock;
+@property (nonatomic, copy) NSString *APIKey;
+@property (nonatomic, copy) NSString *username;
+
 - (void)startRequest;
+
 @end
 
 @implementation Bitlyzer
@@ -25,6 +30,13 @@
 
 - (id)initWithAPIKey:(NSString *)APIKey username:(NSString *)username
 {
+    if (APIKey.length == 0 || username.length == 0) {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException
+                                       reason:@"API key and username must not be empty"
+                                     userInfo:nil];
+        return nil;
+    }
+    
     self = [super init];
     if (self) {
         _APIKey = APIKey;
@@ -35,6 +47,13 @@
 
 - (id)initWithAPIKey:(NSString *)APIKey username:(NSString *)username delegate:(id <BitlyzerDelegate>)delegate
 {
+    if (APIKey.length == 0 || username.length == 0) {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException
+                                       reason:@"API key and username must not be empty"
+                                     userInfo:nil];
+        return nil;
+    }
+    
     self = [super init];
     if (self) {
         _APIKey = APIKey;

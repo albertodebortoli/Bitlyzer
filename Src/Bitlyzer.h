@@ -1,7 +1,7 @@
 //
 //  Bitlyzer.h
 //  Bitlyzer
-//  v1.1.0
+//  v1.1.1
 //
 //  Created by Alberto De Bortoli on 22/02/12.
 //  Copyright (c) 2012 Alberto De Bortoli. All rights reserved.
@@ -30,8 +30,6 @@ typedef void (^FailBlock)(NSString *urlToBitly, NSError *error);
 - (void)shortURL:(NSString *)urlToBitly succeeded:(SuccessBlock)success fail:(FailBlock)fail;
 
 @property (nonatomic, weak) id <BitlyzerDelegate> delegate;
-@property (nonatomic, copy) NSString *APIKey;
-@property (nonatomic, copy) NSString *username;
 
 @end
 
