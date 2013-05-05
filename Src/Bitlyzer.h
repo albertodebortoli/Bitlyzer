@@ -1,7 +1,7 @@
 //
 //  Bitlyzer.h
 //  Bitlyzer
-//  v1.1.1
+//  v2.0.0
 //
 //  Created by Alberto De Bortoli on 22/02/12.
 //  Copyright (c) 2012 Alberto De Bortoli. All rights reserved.
@@ -9,27 +9,82 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^SuccessBlock)(NSString *urlToBitly, NSString *shortenURL);
-typedef void (^FailBlock)(NSString *urlToBitly, NSError *error);
+typedef void (^SuccessBlock)(NSString *urlToShorten, NSString *shortenedURL);
+typedef void (^FailBlock)(NSString *urlToShorten, NSError *error);
+
+@class Bitlyzer;
+
+/** The delegate of a Bitlyzer object should adopt the BitlyzerDelegate protocol. */
 
 @protocol BitlyzerDelegate <NSObject>
+
 @optional
-- (void)bitlyReturnedOkForURL:(NSString *)urlString shortenURL:(NSString *)shortenURL;
-- (void)bitlyReturnedError:(NSError *)error forURL:(NSString *)urlString;
+/**
+ Delegate method to inform the delegant object upon shortening success
+ 
+ @param bitlyzer the Bitlyzer object that requested the shortening
+ @param urlToShorten the URL that was shortened
+ @param shortenedURL the shortened URL
+ */
+- (void)bitlyzer:(Bitlyzer *)bitlyzer didShortURL:(NSString *)urlToShorten toURL:(NSString *)shortenedURL;
+
+/**
+ Delegate method to inform the delegant object upon shortening failure
+ 
+ @param bitlyzer the Bitlyzer object that requested the shortening
+ @param urlToShorten the URL that was attempted to shorten
+ @param error the error occurred during the shortening
+ */
+- (void)bitlyzer:(Bitlyzer *)bitlyzer didFailShorteningURL:(NSString *)urlToShorten error:(NSError *)error;
 @end
 
+/** Bitlyzer class for URL shortening using Bitly API service, both delegate and block based.
+ 
+ If no delegate object is provided requests must should be performed using shortURL:succeeded:fail: method (that is block based) otherwise shortURL: method should be used (delegate based).
+ */
 
 @interface Bitlyzer : NSObject <NSURLConnectionDelegate>
 
-#pragma mark - instance methods
+#pragma mark - Instance methods
 
+/**
+ Initializes and returns a Bitlyzer object with given credentials. Designated initializer.
+ 
+ @param APIKey the API key to use for requests to Bitly API service
+ @param username the username to use for requests to Bitly API service
+ */
 - (id)initWithAPIKey:(NSString *)APIKey username:(NSString *)username;
+
+/**
+ Initializes and returns a Bitlyzer object with given credentials and delegate set
+ 
+ @param APIKey the API key to use for requests to Bitly API service
+ @param username the username to use for requests to Bitly API service
+ @param delegate the delegate object
+ */
 - (id)initWithAPIKey:(NSString *)APIKey username:(NSString *)username delegate:(id <BitlyzerDelegate>)delegate;
 
-- (void)shortURL:(NSString *)urlToBitly;
-- (void)shortURL:(NSString *)urlToBitly succeeded:(SuccessBlock)success fail:(FailBlock)fail;
+/**
+ Contact the Bitly API service to https://api-ssl.bitly.com/v3/shorten to shorten the given URL
+ 
+ @param urlToShorten the URL to shorten
+ */
+- (void)shortURL:(NSString *)urlToShorten;
 
+/**
+ Contact the Bitly API service to https://api-ssl.bitly.com/v3/shorten to shorten the given URL
+ 
+ @param urlToShorten the URL to shorten
+ @param success the success callback block used as callback
+ @param fail the failure block used as callback
+ */
+- (void)shortURL:(NSString *)urlToShorten succeeded:(SuccessBlock)success fail:(FailBlock)fail;
+
+#pragma mark - Properties
+
+/**
+ Reference to the delegate object
+ */
 @property (nonatomic, weak) id <BitlyzerDelegate> delegate;
 
 @end
-

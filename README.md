@@ -15,8 +15,8 @@ Simple usage:
 ``` objective-c
 Bitlyzer *bitlyzer = [[Bitlyzer alloc] init];
 [bitlyzer shortURL:@"http://albertodebortoli.it"
-         succeeded:^(NSString *urlToBitly, NSString *shortenURL) { }
-              fail:^(NSString *urlToBitly, NSError *error) { }];
+         succeeded:^(NSString *urlToShorten, NSString *shortenedURL) { }
+              fail:^(NSString *urlToShorten, NSError *error) { }];
 ```
 
 - or use Bitlyzer using delegation pattern implementing `BitlyzerDelegate` protocol and related optional delegate methods
@@ -28,11 +28,11 @@ Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithDelegate:self];
 
 ``` objective-c
 #pragma mark - BitlyzerDelegate
-- (void)bitlyReturnedOkForURL:(NSString *)urlString shortenURL:(NSString *)shortenURL { ... }
-- (void)bitlyReturnedError:(NSError *)error forURL:(NSString *)urlString { ... }
+- (void)bitlyzer:(Bitlyzer *)bitlyzer didShortURL:(NSString *)urlToShorten toURL:(NSString *)shortenedURL;
+- (void)bitlyzer:(Bitlyzer *)bitlyzer didFailShorteningURL:(NSString *)urlToShorten error:(NSError *)error;
 ```
 
-Bitly response parsing is done using NSJSONSerializtion available in iOS 5 and later. If you need support for previous iOS versions you need to modify `Bitlyzer.m` and use your preferred JSON parser (line 105). 
+Bitly response parsing is done using NSJSONSerializtion available in iOS 5 and later. If you need support for previous iOS versions you need to modify `Bitlyzer.m` and use your preferred JSON parser (line 133).
 
 ![1](http://www.albertodebortoli.it/GitHub/Bitlyzer/ss1.png)
 ![2](http://www.albertodebortoli.it/GitHub/Bitlyzer/ss2.png)

@@ -51,10 +51,10 @@
     @try {
         Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithAPIKey:kBitlyAPIKey username:kBitlyAPIUsername];
         [bitlyzer shortURL:textField.text
-                 succeeded:^(NSString *urlToBitly, NSString *shortenURL) {
-                     [self bitlyReturnedOkForURL:urlToBitly shortenURL:shortenURL];
-                 } fail:^(NSString *urlToBitly, NSError *error) {
-                     [self bitlyReturnedError:error forURL:urlToBitly];
+                 succeeded:^(NSString *urlToShorten, NSString *shortenedURL) {
+                     [self bitlyzer:bitlyzer didShortURL:urlToShorten toURL:shortenedURL];
+                 } fail:^(NSString *urlToShorten, NSError *error) {
+                     [self bitlyzer:bitlyzer didFailShorteningURL:urlToShorten error:error];
                  }];
     }
     @catch (NSException *exception) {
@@ -65,25 +65,25 @@
 
 #pragma mark - IWLBitlyzerDelegate
 
-- (void)bitlyReturnedOkForURL:(NSString *)urlString shortenURL:(NSString *)shortenURL
+- (void)bitlyzer:(Bitlyzer *)bitlyzer didShortURL:(NSString *)urlToShorten toURL:(NSString *)shortenedURL
 {
-    NSLog(@"URL %@ shorten into %@", urlString, shortenURL);
-    shortenURLLabel.text = shortenURL;
+    NSLog(@"URL %@ shorten into %@", urlToShorten, shortenedURL);
+    shortenURLLabel.text = shortenedURL;
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ok"
-                                                    message:[NSString stringWithFormat:@"URL %@ shorten into %@", urlString, shortenURL]
+                                                    message:[NSString stringWithFormat:@"URL %@ shorten into %@", urlToShorten, shortenedURL]
                                                    delegate:nil
                                           cancelButtonTitle:nil
                                           otherButtonTitles:@"Ok", nil];
     [alert show];
 }
 
-- (void)bitlyReturnedError:(NSError *)error forURL:(NSString *)urlString
+- (void)bitlyzer:(Bitlyzer *)bitlyzer didFailShorteningURL:(NSString *)urlToShorten error:(NSError *)error
 {
     NSLog(@"%@", [error description]);
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:[NSString stringWithFormat:@"Can't short URL %@", urlString]
+                                                    message:[NSString stringWithFormat:@"Can't short URL %@", urlToShorten]
                                                    delegate:nil
                                           cancelButtonTitle:nil
                                           otherButtonTitles:@"Ok", nil];
