@@ -7,22 +7,22 @@ If you'd like to include this component as a pod using [CocoaPods](http://cocoap
 
 Simple usage:
 
+- get your [Bitly API credentials](https://bitly.com/a/your_api_key)
 - copy Src folder into your project
-- set your Bitly API username and key in Bitlyzer.m 
 - import `Bitlyzer.h` in your class
 - use Bitlyzer using blocks
 
 ``` objective-c
-Bitlyzer *bitlyzer = [[Bitlyzer alloc] init];
+Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithAPIKey:<BitlyAPIKey> username:<BitlyAPIUsername>];
 [bitlyzer shortURL:@"http://albertodebortoli.it"
          succeeded:^(NSString *urlToShorten, NSString *shortenedURL) { }
               fail:^(NSString *urlToShorten, NSError *error) { }];
 ```
 
-- or use Bitlyzer using delegation pattern implementing `BitlyzerDelegate` protocol and related optional delegate methods
+- or use Bitlyzer using delegation pattern making your class conforming to `BitlyzerDelegate` and implementing the optional delegate methods
 
 ``` objective-c
-Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithDelegate:self];
+Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithAPIKey:<BitlyAPIKey> username:<BitlyAPIUsername> delegate:self];
 [bitlyzer shortURL:@"http://albertodebortoli.it"];
 ```
 
