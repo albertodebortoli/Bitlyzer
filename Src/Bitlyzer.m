@@ -1,7 +1,7 @@
 //
 //  Bitlyzer.m
 //  Bitlyzer
-//  v2.0.0
+//  v2.0.1
 //
 //  Created by Alberto De Bortoli on 22/02/12.
 //  Copyright (c) 2012 Alberto De Bortoli. All rights reserved.
@@ -9,14 +9,16 @@
 
 #import "Bitlyzer.h"
 
-#define kBitlyAPIURL             @"https://api-ssl.bitly.com/v3/shorten?login=%@&apiKey=%@&longUrl=%@&format=json"
+static const NSString *kBitlyzerBitlyAPIURL = @"https://api-ssl.bitly.com/v3/shorten?login=%@&apiKey=%@&longUrl=%@&format=json";
+
+NSString *const BitlyzerErrorDomain = @"BitlyzerErrorDomain";
 
 @interface Bitlyzer ()
 
 @property (nonatomic, strong) NSMutableData *receivedData;
 @property (nonatomic, copy) NSString *urlToShorten;
-@property (nonatomic, copy) SuccessBlock successBlock;
-@property (nonatomic, copy) FailBlock failBlock;
+@property (nonatomic, copy) BitlyzerSuccessBlock successBlock;
+@property (nonatomic, copy) BitlyzerFailBlock failureBlock;
 @property (nonatomic, copy) NSString *APIKey;
 @property (nonatomic, copy) NSString *username;
 
@@ -32,7 +34,7 @@
 {
     if (APIKey.length == 0 || username.length == 0) {
         @throw [NSException exceptionWithName:NSInvalidArgumentException
-                                       reason:@"API key and username must not be empty"
+                                       reason:@"Bitly API key and username must not be empty"
                                      userInfo:nil];
         return nil;
     }
@@ -49,7 +51,7 @@
 {
     if (APIKey.length == 0 || username.length == 0) {
         @throw [NSException exceptionWithName:NSInvalidArgumentException
-                                       reason:@"API key and username must not be empty"
+                                       reason:@"Bitly API key and username must not be empty"
                                      userInfo:nil];
         return nil;
     }
@@ -72,10 +74,10 @@
     [self _startRequest];
 }
 
-- (void)shortURL:(NSString *)urlToShorten succeeded:(SuccessBlock)success fail:(FailBlock)fail
+- (void)shortURL:(NSString *)urlToShorten succeeded:(BitlyzerSuccessBlock)success fail:(BitlyzerFailBlock)failure
 {
     self.successBlock = success;
-    self.failBlock = fail;
+    self.failureBlock = failure;
     self.urlToShorten = urlToShorten;
     
     [self _startRequest];
@@ -85,7 +87,7 @@
 
 - (void)_startRequest
 {
-    NSString *urlString = [NSString stringWithFormat:kBitlyAPIURL, self.username, self.APIKey, self.urlToShorten];
+    NSString *urlString = [NSString stringWithFormat:[kBitlyzerBitlyAPIURL copy], self.username, self.APIKey, self.urlToShorten];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
@@ -113,9 +115,9 @@
 - (void)connection:(NSURLConnection *)connection
   didFailWithError:(NSError *)error
 {
-    if (self.failBlock) {
+    if (self.failureBlock) {
         // use blocks
-        self.failBlock(self.urlToShorten, error);
+        self.failureBlock(self.urlToShorten, error);
     }
     else {
         // use delegation
@@ -125,7 +127,7 @@
     }
     
     self.successBlock = nil;
-    self.failBlock = nil;
+    self.failureBlock = nil;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
@@ -148,11 +150,11 @@
         }
     } else {
         NSDictionary *errorDictionary = @{@"Bitly Error": [JSON valueForKeyPath:@"status_txt"]};
-        NSError *error = [NSError errorWithDomain:@"BitlyzerDomain" code:500 userInfo:errorDictionary];
+        NSError *error = [NSError errorWithDomain:BitlyzerErrorDomain code:500 userInfo:errorDictionary];
         
-        if (self.failBlock) {
+        if (self.failureBlock) {
             // use blocks
-            self.failBlock(self.urlToShorten, error);
+            self.failureBlock(self.urlToShorten, error);
         }
         else {
             // use delegation
@@ -163,7 +165,7 @@
     }
     
     self.successBlock = nil;
-    self.failBlock = nil;
+    self.failureBlock = nil;
 }
 
 @end

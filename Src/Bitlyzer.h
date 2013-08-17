@@ -1,7 +1,7 @@
 //
 //  Bitlyzer.h
 //  Bitlyzer
-//  v2.0.0
+//  v2.0.1
 //
 //  Created by Alberto De Bortoli on 22/02/12.
 //  Copyright (c) 2012 Alberto De Bortoli. All rights reserved.
@@ -9,8 +9,10 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^SuccessBlock)(NSString *urlToShorten, NSString *shortenedURL);
-typedef void (^FailBlock)(NSString *urlToShorten, NSError *error);
+extern NSString *const BitlyzerErrorDomain;
+
+typedef void (^BitlyzerSuccessBlock)(NSString *urlToShorten, NSString *shortenedURL);
+typedef void (^BitlyzerFailBlock)(NSString *urlToShorten, NSError *error);
 
 @class Bitlyzer;
 
@@ -76,9 +78,9 @@ typedef void (^FailBlock)(NSString *urlToShorten, NSError *error);
  
  @param urlToShorten the URL to shorten
  @param success the success callback block used as callback
- @param fail the failure block used as callback
+ @param failure the failure block used as callback
  */
-- (void)shortURL:(NSString *)urlToShorten succeeded:(SuccessBlock)success fail:(FailBlock)fail;
+- (void)shortURL:(NSString *)urlToShorten succeeded:(BitlyzerSuccessBlock)success fail:(BitlyzerFailBlock)failure;
 
 #pragma mark - Properties
 

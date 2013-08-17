@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D320256414F5A34700E7753C /* Bitlyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = D320256014F5A34700E7753C /* Bitlyzer.m */; };
+		D323466517BFDF7C00D7C001 /* LICENSE.markdown in Resources */ = {isa = PBXBuildFile; fileRef = D323466317BFDF7C00D7C001 /* LICENSE.markdown */; };
+		D323466617BFDF7C00D7C001 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D323466417BFDF7C00D7C001 /* README.md */; };
+		D323466817BFDF8900D7C001 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D323466717BFDF8900D7C001 /* Default-568h@2x.png */; };
 		D37AF5FF14F5898200296890 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AF5FE14F5898200296890 /* UIKit.framework */; };
 		D37AF60114F5898200296890 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AF60014F5898200296890 /* Foundation.framework */; };
 		D37AF60314F5898200296890 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D37AF60214F5898200296890 /* CoreGraphics.framework */; };
@@ -21,6 +24,9 @@
 /* Begin PBXFileReference section */
 		D320255F14F5A34700E7753C /* Bitlyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bitlyzer.h; path = ../Src/Bitlyzer.h; sourceTree = SOURCE_ROOT; };
 		D320256014F5A34700E7753C /* Bitlyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bitlyzer.m; path = ../Src/Bitlyzer.m; sourceTree = SOURCE_ROOT; };
+		D323466317BFDF7C00D7C001 /* LICENSE.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.markdown; path = ../LICENSE.markdown; sourceTree = "<group>"; };
+		D323466417BFDF7C00D7C001 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		D323466717BFDF8900D7C001 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		D37AF5FA14F5898200296890 /* BitlyzerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitlyzerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D37AF5FE14F5898200296890 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D37AF60014F5898200296890 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -63,6 +69,8 @@
 		D37AF5EF14F5898200296890 = {
 			isa = PBXGroup;
 			children = (
+				D323466317BFDF7C00D7C001 /* LICENSE.markdown */,
+				D323466417BFDF7C00D7C001 /* README.md */,
 				D37AF60414F5898200296890 /* Bitlyzer */,
 				D37AF5FD14F5898200296890 /* Frameworks */,
 				D37AF5FB14F5898200296890 /* Products */,
@@ -105,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				D37AF63214F58BCB00296890 /* en.lproj */,
+				D323466717BFDF8900D7C001 /* Default-568h@2x.png */,
 				D3AE9D7F14FA8409002E9779 /* BitlyzerDemo-Info.plist */,
 				D3AE9D8014FA8409002E9779 /* BitlyzerDemo-Prefix.pch */,
 				D37AF62E14F58BAE00296890 /* main.m */,
@@ -173,6 +182,9 @@
 			files = (
 				D37AF67E14F58F0500296890 /* InfoPlist.strings in Resources */,
 				D3AF428914F5A2F500523C73 /* ViewController.xib in Resources */,
+				D323466517BFDF7C00D7C001 /* LICENSE.markdown in Resources */,
+				D323466617BFDF7C00D7C001 /* README.md in Resources */,
+				D323466817BFDF8900D7C001 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
