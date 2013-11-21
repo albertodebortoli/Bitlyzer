@@ -30,6 +30,8 @@ typedef void (^BitlyzerFailBlock)(NSString *urlToShorten, NSError *error);
  */
 - (void)bitlyzer:(Bitlyzer *)bitlyzer didShortURL:(NSString *)urlToShorten toURL:(NSString *)shortenedURL;
 
+- (void)bitlyzer:(Bitlyzer *)bitlyzer didShortURLs:(NSArray *)urlsToShorten toURLs:(NSArray *)shortenedURLs;
+
 /**
  Delegate method to inform the delegant object upon shortening failure
  
@@ -73,6 +75,8 @@ typedef void (^BitlyzerFailBlock)(NSString *urlToShorten, NSError *error);
  */
 - (void)shortURL:(NSString *)urlToShorten;
 
+- (void)shortURLs:(NSArray *)urlsToShorten;
+
 /**
  Contact the Bitly API service to https://api-ssl.bitly.com/v3/shorten to shorten the given URL
  
@@ -81,6 +85,8 @@ typedef void (^BitlyzerFailBlock)(NSString *urlToShorten, NSError *error);
  @param failure the failure block used as callback
  */
 - (void)shortURL:(NSString *)urlToShorten succeeded:(BitlyzerSuccessBlock)success fail:(BitlyzerFailBlock)failure;
+
+- (void)shortURLs:(NSArray *)urlsToShorten succeeded:(BitlyzerSuccessBlock)success fail:(BitlyzerFailBlock)failure;
 
 #pragma mark - Properties
 

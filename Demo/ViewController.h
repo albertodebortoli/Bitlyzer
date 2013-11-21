@@ -11,8 +11,10 @@
 
 @interface ViewController : UIViewController <BitlyzerDelegate> {
     
-    IBOutlet UILabel *shortenURLLabel;
-    IBOutlet UITextField *textField;
+    IBOutlet UILabel *topShortenURLLabel;
+    IBOutlet UILabel *bottomShortenURLLabel;
+    IBOutlet UITextField *topTextField;
+    IBOutlet UITextField *bottomTextField;
 }
 
 - (IBAction)shortUrlAction:(id)sender;
