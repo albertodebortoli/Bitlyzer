@@ -8,8 +8,8 @@
 
 #import "ViewController.h"
 
-#define kBitlyAPIUsername        @""
-#define kBitlyAPIKey             @""
+#define kBitlyAPIUsername        @"whispit"
+#define kBitlyAPIKey             @"R_be8d9f9c34e5f37e8a40b77db3217e80"
 
 @interface ViewController ()
 
@@ -24,7 +24,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [textField becomeFirstResponder];
+    [topTextField becomeFirstResponder];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -39,7 +39,16 @@
 {
     @try {
         Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithAPIKey:kBitlyAPIKey username:kBitlyAPIUsername delegate:self];
-        [bitlyzer shortURL:textField.text];
+        
+        NSMutableArray *linkArray = [NSMutableArray new];
+        
+        if (topTextField.text.length > 7)
+            [linkArray addObject:topTextField.text];
+        if (bottomTextField.text.length > 7)
+            [linkArray addObject:bottomTextField.text];
+        
+        [bitlyzer shortURLs:linkArray];
+
     }
     @catch (NSException *exception) {
         [self _showAlertForMissingCredentials];
@@ -50,7 +59,7 @@
 {
     @try {
         Bitlyzer *bitlyzer = [[Bitlyzer alloc] initWithAPIKey:kBitlyAPIKey username:kBitlyAPIUsername];
-        [bitlyzer shortURL:textField.text
+        [bitlyzer shortURL:topTextField.text
                  succeeded:^(NSString *urlToShorten, NSString *shortenedURL) {
                      [self bitlyzer:bitlyzer didShortURL:urlToShorten toURL:shortenedURL];
                  } fail:^(NSString *urlToShorten, NSError *error) {
@@ -67,15 +76,17 @@
 
 - (void)bitlyzer:(Bitlyzer *)bitlyzer didShortURL:(NSString *)urlToShorten toURL:(NSString *)shortenedURL
 {
-    NSLog(@"URL %@ shorten into %@", urlToShorten, shortenedURL);
-    shortenURLLabel.text = shortenedURL;
+    if ([urlToShorten isEqualToString:topTextField.text]) {
+        topShortenURLLabel.text = shortenedURL;
+    }
+    if ([urlToShorten isEqualToString:bottomTextField.text]) {
+        bottomShortenURLLabel.text = shortenedURL;
+    }
+}
+
+- (void)bitlyzer:(Bitlyzer *)bitlyzer didShortURLs:(NSArray *)urlsToShorten toURLs:(NSArray *)shortenedURLs
+{
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ok"
-                                                    message:[NSString stringWithFormat:@"URL %@ shorten into %@", urlToShorten, shortenedURL]
-                                                   delegate:nil
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:@"Ok", nil];
-    [alert show];
 }
 
 - (void)bitlyzer:(Bitlyzer *)bitlyzer didFailShorteningURL:(NSString *)urlToShorten error:(NSError *)error

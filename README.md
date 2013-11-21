@@ -1,3 +1,7 @@
+## Changes in this fork
+
+Added support to shorten multiple URLs at once.
+
 # Bitlyzer
 
 Class to shorten URLs with Bit.ly on iOS (both block based and delegate based using ARC).

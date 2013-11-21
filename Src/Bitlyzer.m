@@ -14,13 +14,19 @@ static const NSString *kBitlyzerBitlyAPIURL = @"https://api-ssl.bitly.com/v3/sho
 NSString *const BitlyzerErrorDomain = @"BitlyzerErrorDomain";
 
 @interface Bitlyzer ()
+{
+    NSInteger numberOfFailures;
+    NSInteger numberOfSucceeds;
+}
 
-@property (nonatomic, strong) NSMutableData *receivedData;
-@property (nonatomic, copy) NSString *urlToShorten;
+@property (nonatomic, strong) NSMutableDictionary *receivedDataHash;
+@property (nonatomic, copy) NSArray *urlsToShorten;
 @property (nonatomic, copy) BitlyzerSuccessBlock successBlock;
 @property (nonatomic, copy) BitlyzerFailBlock failureBlock;
 @property (nonatomic, copy) NSString *APIKey;
 @property (nonatomic, copy) NSString *username;
+@property (nonatomic, strong) NSMutableDictionary *shortenedURLHash;
+@property (nonatomic, strong) NSMutableDictionary *urlsToShortenHash;
 
 - (void)_startRequest;
 
@@ -43,6 +49,10 @@ NSString *const BitlyzerErrorDomain = @"BitlyzerErrorDomain";
     if (self) {
         _APIKey = APIKey;
         _username = username;
+        _receivedDataHash = [NSMutableDictionary new];
+        _shortenedURLHash = [NSMutableDictionary new];
+        _urlsToShortenHash = [NSMutableDictionary new];
+        numberOfFailures = numberOfSucceeds = 0;
     }
     return self;
 }
@@ -61,6 +71,10 @@ NSString *const BitlyzerErrorDomain = @"BitlyzerErrorDomain";
         _APIKey = APIKey;
         _username = username;
         _delegate = delegate;
+        _receivedDataHash = [NSMutableDictionary new];
+        _shortenedURLHash = [NSMutableDictionary new];
+        _urlsToShortenHash = [NSMutableDictionary new];
+        numberOfFailures = numberOfSucceeds = 0;
     }
     return self;
 }
@@ -69,7 +83,14 @@ NSString *const BitlyzerErrorDomain = @"BitlyzerErrorDomain";
 
 - (void)shortURL:(NSString *)urlToShorten
 {
-    self.urlToShorten = [urlToShorten copy];
+    self.urlsToShorten = [NSArray arrayWithObject:urlToShorten];
+    
+    [self _startRequest];
+}
+
+- (void)shortURLs:(NSArray *)urlsToShorten
+{
+    self.urlsToShorten = urlsToShorten.copy;
     
     [self _startRequest];
 }
@@ -78,7 +99,7 @@ NSString *const BitlyzerErrorDomain = @"BitlyzerErrorDomain";
 {
     self.successBlock = success;
     self.failureBlock = failure;
-    self.urlToShorten = urlToShorten;
+    self.urlsToShorten = [NSArray arrayWithObject:urlToShorten];
     
     [self _startRequest];
 }
@@ -87,15 +108,19 @@ NSString *const BitlyzerErrorDomain = @"BitlyzerErrorDomain";
 
 - (void)_startRequest
 {
-    NSString *urlString = [NSString stringWithFormat:[kBitlyzerBitlyAPIURL copy], self.username, self.APIKey, self.urlToShorten];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    if (urlConnection) {
-        self.receivedData = [NSMutableData data];
-    } else {
-        if ([_delegate respondsToSelector:@selector(bitlyzer:didFailShorteningURL:error:)]) {
-            [_delegate bitlyzer:self didFailShorteningURL:self.urlToShorten error:nil];
+    for (NSString *aUrlToShorten in self.urlsToShorten) {
+        
+        NSString *urlString = [NSString stringWithFormat:[kBitlyzerBitlyAPIURL copy], self.username, self.APIKey, aUrlToShorten];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+        NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        if (urlConnection) {
+            [self.receivedDataHash setObject:[NSMutableData data] forKey:urlConnection.originalRequest.URL.absoluteString];
+            [self.urlsToShortenHash setObject:aUrlToShorten forKey:urlConnection.originalRequest.URL.absoluteString];
+        } else {
+            if ([_delegate respondsToSelector:@selector(bitlyzer:didFailShorteningURL:error:)]) {
+                [_delegate bitlyzer:self didFailShorteningURL:aUrlToShorten error:nil];
+            }
         }
     }
 }
@@ -104,68 +129,106 @@ NSString *const BitlyzerErrorDomain = @"BitlyzerErrorDomain";
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    [self.receivedData setLength:0];
+    NSMutableData *receivedData = [self.receivedDataHash objectForKey:connection.originalRequest.URL.absoluteString];
+    [receivedData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    [self.receivedData appendData:data];
+    NSMutableData *receivedData = [self.receivedDataHash objectForKey:connection.originalRequest.URL.absoluteString];
+    [receivedData appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection
   didFailWithError:(NSError *)error
 {
+    numberOfFailures++;
+    
+    NSString *urlToShorten = [self.urlsToShortenHash objectForKey:connection.originalRequest.URL.absoluteString];
+    
     if (self.failureBlock) {
         // use blocks
-        self.failureBlock(self.urlToShorten, error);
+        self.failureBlock(urlToShorten, error);
     }
     else {
         // use delegation
         if ([_delegate respondsToSelector:@selector(bitlyzer:didFailShorteningURL:error:)]) {
-            [_delegate bitlyzer:self didFailShorteningURL:self.urlToShorten error:error];
+            [_delegate bitlyzer:self didFailShorteningURL:urlToShorten error:error];
         }
     }
     
     self.successBlock = nil;
     self.failureBlock = nil;
+    
+    if (numberOfSucceeds + numberOfFailures == self.urlsToShortenHash.count)
+    {
+        [self.urlsToShortenHash removeAllObjects];
+        [self.receivedDataHash removeAllObjects];
+        [self.shortenedURLHash removeAllObjects];
+    }
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:self.receivedData options:kNilOptions error:nil];
+    NSMutableData *receivedData = [self.receivedDataHash objectForKey:connection.originalRequest.URL.absoluteString];
+    
+    NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:receivedData options:kNilOptions error:nil];
+    NSString *urlToShorten = [self.urlsToShortenHash objectForKey:connection.originalRequest.URL.absoluteString];
     
     NSUInteger statusCode = [[JSON valueForKeyPath:@"status_code"] integerValue];
     if (statusCode == 200) {
+        numberOfSucceeds++;
+        
         NSString *shortenURL = [[JSON valueForKeyPath:@"data"] valueForKey:@"url"];
+        
+        [self.shortenedURLHash setObject:shortenURL forKey:urlToShorten];
         
         if (self.successBlock) {
             // use blocks
-            self.successBlock(self.urlToShorten, shortenURL);
+            self.successBlock(urlToShorten, shortenURL);
         }
         else {
             // use delegation
             if ([_delegate respondsToSelector:@selector(bitlyzer:didShortURL:toURL:)]) {
-                [_delegate bitlyzer:self didShortURL:self.urlToShorten toURL:shortenURL];
+                [_delegate bitlyzer:self didShortURL:urlToShorten toURL:shortenURL];
             }
         }
+        
+        if ([_delegate respondsToSelector:@selector(bitlyzer:didShortURLs:toURLs:)]) {
+            
+            if (numberOfSucceeds == self.receivedDataHash.allKeys.count) {
+                [_delegate bitlyzer:self didShortURLs:self.shortenedURLHash.allKeys toURLs:self.shortenedURLHash.allValues];
+            }
+            
+        }
+        
     } else {
+        numberOfFailures++;
+        
         NSDictionary *errorDictionary = @{@"Bitly Error": [JSON valueForKeyPath:@"status_txt"]};
         NSError *error = [NSError errorWithDomain:BitlyzerErrorDomain code:500 userInfo:errorDictionary];
         
         if (self.failureBlock) {
             // use blocks
-            self.failureBlock(self.urlToShorten, error);
+            self.failureBlock(urlToShorten, error);
         }
         else {
             // use delegation
             if ([_delegate respondsToSelector:@selector(bitlyzer:didFailShorteningURL:error:)]) {
-                [_delegate bitlyzer:self didFailShorteningURL:self.urlToShorten error:error];
+                [_delegate bitlyzer:self didFailShorteningURL:urlToShorten error:error];
             }
         }
     }
     
     self.successBlock = nil;
     self.failureBlock = nil;
+    
+    if (numberOfSucceeds + numberOfFailures == self.urlsToShortenHash.count)
+    {
+        [self.urlsToShortenHash removeAllObjects];
+        [self.receivedDataHash removeAllObjects];
+        [self.shortenedURLHash removeAllObjects];
+    }
 }
 
 @end
